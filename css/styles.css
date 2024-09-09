@@ -9,7 +9,8 @@ html {
 }
 
 body {
-    background-color: rgba(6, 8, 31, .9);
+    /* background-color: rgba(6, 8, 31, .9); */
+    background-color: #090a1b;
     color: white;
     font-family: Montserrat, sans-serif;
 }
