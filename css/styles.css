@@ -1,0 +1,179 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: rgba(6, 8, 31, .9);
+    color: white;
+    font-family: Montserrat, sans-serif;
+}
+
+main {
+    margin: 0 4rem;
+}
+
+.introduction {
+    margin: 4rem 0;
+}
+
+h1 {
+    margin-bottom: 4rem;
+    font-size: 8rem;
+    background: linear-gradient(90deg, red, blue 50%);
+    background: -webkit-linear-gradient(45deg, red, blue 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+div.divider {
+    width: 450px;
+    height: 3px;
+    position: relative;
+    top: -20px;
+    background: linear-gradient(90deg, red, blue);
+}
+
+div.flex {
+    margin-top: -2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 400px;
+}
+
+h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+div.interest h2 {
+    background: #56CCF2;
+    background: -webkit-linear-gradient(to right, #0cebeb, #086ef3);
+    background: linear-gradient(to right, #0cebeb, #0059cc);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: -.9rem;
+}
+
+.interest p {
+    color: rgba(255, 255, 255, .6);
+    font-size: 1.7rem;
+}
+
+div.contact h2 {
+    /* color: rgb(127, 127, 255); */
+    /* background: linear-gradient(90deg, #f0f, #fe660f 30%); */
+    background: #007991;
+    background: -webkit-linear-gradient(to right, #8A2387, #E94057 20%);
+    background: linear-gradient(to right, #8A2387, #E94057 20%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+div.contact ul li a {
+    color: rgba(255, 255, 255, .7);
+}
+
+ul {
+    display: flex;
+}
+
+li {
+    list-style-type: none;
+    width: 150px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    opacity: .5;
+}
+
+a:hover {
+    opacity: 1;
+}
+
+.contact p {
+    padding: 0 15px;
+    align-content: center;
+    font-size: 1.4rem;
+}
+
+img {
+    width: 30px;
+}
+
+
+/* Media Queries */
+/* Media Query for Mobile */
+@media only screen and (max-width: 450px) {
+    main {
+        margin: 0 1.2rem;
+    }
+
+    div.introduction {
+        width: 90vw;
+    }
+    div.introduction h1 {
+        font-size: 3.8rem;
+        /* width: 200px; */
+        background: linear-gradient(90deg, red, blue 50%);
+        background: -webkit-linear-gradient(45deg, red, blue 50%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    div.introduction span {
+        display: block;
+    }
+
+    div.introduction div.divider {
+        width: 13rem;
+        height: 2px;
+        position: relative;
+        top: -20px;
+    }
+
+    div.flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: start;
+        height: 400px;  
+    }
+
+    .interest h2,
+    .contact h2 {
+        font-size: 2rem;
+    }
+
+    .contact h2 {
+        margin-bottom: 1.7rem;
+    }
+
+    .interest p {
+        font-size: 1.2rem;
+    }
+
+    .contact p {
+        font-size: 1rem;
+    }
+
+    img {
+        width: 20px;
+    }
+
+    li {
+        width: 95px;
+    }
+}
