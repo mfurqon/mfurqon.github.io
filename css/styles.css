@@ -125,8 +125,7 @@ img {
         width: 90vw;
     }
     div.introduction h1 {
-        font-size: 3.8rem;
-        /* width: 200px; */
+        font-size: 6.5rem;
         background: linear-gradient(90deg, red, blue 50%);
         background: -webkit-linear-gradient(45deg, red, blue 50%);
         background-clip: text;
@@ -139,7 +138,7 @@ img {
     }
 
     div.introduction div.divider {
-        width: 13rem;
+        width: 25rem;
         height: 2px;
         position: relative;
         top: -20px;
@@ -155,7 +154,7 @@ img {
 
     .interest h2,
     .contact h2 {
-        font-size: 2rem;
+        font-size: 2.8rem;
     }
 
     .contact h2 {
@@ -163,18 +162,25 @@ img {
     }
 
     .interest p {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
 
     .contact p {
-        font-size: 1rem;
+        font-size: 1.3rem;
     }
 
     img {
-        width: 20px;
+        width: 25px;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
     }
 
     li {
-        width: 95px;
+        width: 110px;
+        margin-bottom: 1.5rem;
     }
 }
