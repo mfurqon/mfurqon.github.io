@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="id" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="color-scheme" content="dark light" />
+        <meta name="theme-color" content="#080E1B" />
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="public/images/Futuristic MFP Neon Monogram.ico"
+        />
+        <!-- Tema awal, dijalankan sebelum halaman digambar agar tidak berkedip.
+         DEFAULT_THEME: 'dark', 'light', atau 'system' (ikuti pengaturan perangkat). Pilihan pengunjung menggantikannya. -->
+        <script>
+            (function () {
+                var DEFAULT_THEME = "dark";
+                var theme = DEFAULT_THEME;
+                try {
+                    theme = localStorage.getItem("theme") || DEFAULT_THEME;
+                } catch (e) {}
+                if (theme === "system")
+                    theme = matchMedia("(prefers-color-scheme: light)").matches
+                        ? "light"
+                        : "dark";
+                document.documentElement.dataset.theme = theme;
+            })();
+        </script>
+        <title>Muhammad Furqon Prasetyo | Portfolio</title>
+        <meta
+            name="description"
+            content="Portfolio profesional Muhammad Furqon Prasetyo: proyek, latar belakang, dan kontak."
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap"
+            rel="stylesheet"
+        />
+        <script type="module" src="/src/main.js"></script>
+    </head>
+    <body>
+        <main class="mx-auto w-full max-w-5xl px-5 sm:px-8">
+            <!-- HOME -->
+            <section
+                id="home"
+                class="pt-20 pb-16 sm:pt-32 sm:pb-24"
+                aria-labelledby="hero-title"
+            >
+                <p class="mb-4 text-muted" data-site="role"></p>
+                <h1
+                    id="hero-title"
+                    class="font-display max-w-3xl text-5xl leading-[1.05] font-bold tracking-tight sm:text-7xl"
+                    data-site="name"
+                ></h1>
+                <p
+                    class="mt-6 max-w-xl text-lg leading-relaxed text-muted"
+                    data-site="intro"
+                ></p>
+                <div class="mt-9 flex flex-wrap gap-3">
+                    <a
+                        href="#contact"
+                        class="inline-flex min-h-12 items-center gap-2 rounded-full bg-accent px-6 font-semibold text-on-accent transition-colors hover:bg-accent-hover"
+                    >
+                        Hubungi saya
+                        <i
+                            data-lucide="arrow-right"
+                            class="size-4"
+                            aria-hidden="true"
+                        ></i>
+                    </a>
+                    <a
+                        data-cv
+                        href="#"
+                        target="_blank"
+                        rel="noopener"
+                        class="inline-flex min-h-12 items-center gap-2 rounded-full border border-line px-6 font-semibold transition-colors hover:bg-tint"
+                    >
+                        <i data-lucide="file-text" class="size-4" aria-hidden="true"></i>
+                        Buka CV
+                    </a>
+                </div>
+            </section>
+
+            <!-- PROJECTS -->
+            <section
+                id="projects"
+                class="scroll-mt-8 py-16"
+                aria-labelledby="projects-title"
+            >
+                <h2 id="projects-title" class="font-display mb-8 text-3xl font-semibold">
+                    Proyek
+                </h2>
+                <ul
+                    id="project-list"
+                    class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+                ></ul>
+            </section>
+
+            <!-- ABOUT -->
+            <section id="about" class="scroll-mt-8 py-16" aria-labelledby="about-title">
+                <h2 id="about-title" class="font-display mb-8 text-3xl font-semibold">
+                    Tentang saya
+                </h2>
+                <div
+                    class="grid gap-10 rounded-3xl border border-line bg-surface p-7 sm:p-10 md:grid-cols-2"
+                >
+                    <div class="space-y-8">
+                        <p id="about-profile" class="leading-relaxed text-muted"></p>
+                        <div>
+                            <h3 class="font-display mb-3 text-xl font-semibold">
+                                Tujuan karier
+                            </h3>
+                            <p id="about-goal" class="leading-relaxed text-muted"></p>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="font-display mb-3 text-xl font-semibold">
+                                Pendidikan
+                            </h3>
+                            <ul id="about-education" class="space-y-3"></ul>
+                        </div>
+                        <div>
+                            <h3 class="font-display mb-3 text-xl font-semibold">
+                                Keahlian
+                            </h3>
+                            <ul id="about-skills" class="flex flex-wrap gap-2"></ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACT: penutup halaman -->
+            <section
+                id="contact"
+                class="scroll-mt-8 py-16 sm:py-24"
+                aria-labelledby="contact-title"
+            >
+                <div
+                    class="contact-panel rounded-3xl border border-line bg-surface p-7 sm:p-14"
+                >
+                    <h2
+                        id="contact-title"
+                        class="font-display max-w-3xl text-4xl leading-[1.1] font-bold tracking-tight sm:text-6xl"
+                        data-site="contactHeadline"
+                    ></h2>
+                    <div class="mt-9 flex flex-wrap gap-3">
+                        <a
+                            id="email-cta"
+                            href="#"
+                            class="inline-flex min-h-12 items-center gap-2 rounded-full bg-accent px-6 font-semibold text-on-accent transition-colors hover:bg-accent-hover"
+                        >
+                            <i data-lucide="mail" class="size-4" aria-hidden="true"></i>
+                            Kirim email
+                        </a>
+                        <a
+                            data-cv
+                            href="#"
+                            target="_blank"
+                            rel="noopener"
+                            class="inline-flex min-h-12 items-center gap-2 rounded-full border border-line px-6 font-semibold transition-colors hover:bg-tint"
+                        >
+                            <i
+                                data-lucide="file-text"
+                                class="size-4"
+                                aria-hidden="true"
+                            ></i>
+                            Buka CV
+                        </a>
+                    </div>
+                    <ul
+                        id="contact-list"
+                        class="mt-10 flex flex-wrap gap-3"
+                        aria-label="Media kontak"
+                    ></ul>
+                </div>
+            </section>
+
+            <footer class="border-t border-line py-8 text-sm text-muted">
+                <p>
+                    &copy; <span data-site="year"></span> <span data-site="name"></span>
+                </p>
+            </footer>
+        </main>
+    </body>
+</html>

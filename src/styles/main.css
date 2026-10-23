@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+/* ==== WARNA & FONT: ubah di sini, seluruh situs ikut berubah ====
+   Tailwind membuat kelas otomatis dari nama token: --color-card -> bg-card, text-card, border-card
+   Blok @theme = MODE GELAP (default). Blok :root[data-theme="light"] di bawahnya = MODE TERANG. */
+@theme {
+  --color-base: #080e1b;        /* primer: latar halaman */
+  --color-surface: #101a2c;     /* sekunder: kotak About, tombol kontak */
+  --color-card: #14213a;        /* tersier: kartu proyek */
+  --color-accent: #60a5fa;      /* aksen: tombol, nav aktif, tautan */
+  --color-accent-hover: #75aaff;
+  --color-on-accent: #06101f;   /* teks di atas warna aksen */
+  --color-ink: #eef3ff;         /* teks utama */
+  --color-muted: #91a0b9;       /* teks sekunder */
+  --color-line: #ffffff1a;      /* border tipis */
+  --color-tint: #ffffff0d;      /* lapisan tipis untuk tag dan hover */
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Variabel tambahan untuk kaca (glass) dan bayangan nav */
+:root {
+  --glass: rgb(255 255 255 / 0.08);       /* warna dasar kaca: putih tipis */
+  --glass-sheen: rgb(255 255 255 / 0.2);  /* kilau dari atas ke bawah */
+  --glass-edge: rgb(255 255 255 / 0.4);   /* sorot garis tepi atas */
+  --glass-border: rgb(255 255 255 / 0.22);
+  --nav-shadow: 0 10px 30px rgb(0 0 0 / 0.35);
+  /* Glow aksen (biru terang). Ditulis sebagai angka tetap, bukan color-mix, agar tidak salah dihitung saat build. */
+  --glow-nav: rgb(96 165 250 / 0.45);
+  --glow-ring: rgb(96 165 250 / 0.25);
+  --glow-btn: rgb(96 165 250 / 0.6);
+  --glow-wash: rgb(96 165 250 / 0.28);
+  color-scheme: dark;
+}
+
+/* MODE TERANG: hanya menimpa nilai token. Aksen dibuat lebih gelap agar kontras di latar putih. */
+:root[data-theme="light"] {
+  --color-base: #f1f5fc;
+  --color-surface: #e6edf8;
+  --color-card: #ffffff;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-on-accent: #ffffff;
+  --color-ink: #0b1730;
+  --color-muted: #4a5a75;
+  --color-line: #0b17301f;
+  --color-tint: #0b17300d;
+  --glass: rgb(255 255 255 / 0.4);
+  --glass-sheen: rgb(255 255 255 / 0.65);
+  --glass-edge: rgb(255 255 255 / 1);
+  --glass-border: rgb(11 23 48 / 0.14);
+  --nav-shadow: 0 10px 30px rgb(11 23 48 / 0.14);
+  --glow-nav: rgb(37 99 235 / 0.4);
+  --glow-ring: rgb(37 99 235 / 0.2);
+  --glow-btn: rgb(37 99 235 / 0.45);
+  --glow-wash: rgb(37 99 235 / 0.18);
+  color-scheme: light;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-base text-ink font-sans antialiased; padding-bottom: 7rem; }
+  :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: 0.75rem; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation: none !important; }
+  }
+}
+
+/* Kaca: dipakai di kapsul nav dan tombol tema saja. */
+.nav-capsule {
+  /* Lapisan atas: kilau gradasi. Lapisan bawah: warna kaca. Blur + saturasi membuat isi di belakang terlihat tembus. */
+  background: linear-gradient(180deg, var(--glass-sheen), transparent 70%), var(--glass);
+  backdrop-filter: blur(24px) saturate(1.8);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--nav-shadow), inset 0 1px 0 var(--glass-edge), inset 0 0 0 1px rgb(255 255 255 / 0.04);
+}
+.nav-item[aria-current="true"] {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  box-shadow: 0 0 22px var(--glow-nav);
+}
+
+/* Ikon tombol tema: matahari saat gelap (klik = terang), bulan saat terang. */
+:root[data-theme="dark"] .theme-icon-moon,
+:root[data-theme="light"] .theme-icon-sun { display: none; }
+
+/* Tombol ikon kontak: menyala saat di-hover atau difokus keyboard. */
+.contact-btn {
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.contact-btn:hover,
+.contact-btn:focus-visible {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  border-color: var(--color-accent);
+  box-shadow:
+    0 0 0 4px var(--glow-ring),
+    0 0 28px var(--glow-btn);
+  transform: translateY(-2px);
+}
+
+/* Deskripsi kartu proyek: tinggi tetap 3 baris (3 x 1.5rem) agar semua kartu rata.
+   Jika teks lebih panjang, main.js menambahkan data-scroll="true" dan teks bergulir otomatis.
+   Ubah tinggi di sini jika ingin lebih banyak/sedikit baris. */
+.desc-box { height: 4.5rem; overflow: hidden; }
+.desc-text { line-height: 1.5rem; }
+.desc-box[data-scroll="true"] .desc-text {
+  animation: desc-scroll var(--scroll-time, 8s) ease-in-out 1.5s infinite alternate;
+}
+.desc-box:hover .desc-text { animation-play-state: paused; }
+@keyframes desc-scroll {
+  to { transform: translateY(calc(-1 * var(--scroll-distance, 0px))); }
+}
+/* Jika pengunjung meminta gerak dikurangi, animasi mati dan kotak bisa digulir manual. */
+@media (prefers-reduced-motion: reduce) {
+  .desc-box[data-scroll="true"] { overflow-y: auto; }
+}
+
+/* Panel penutup di section Contact, dengan cahaya aksen di sudut kanan atas. */
+.contact-panel { position: relative; isolation: isolate; overflow: hidden; }
+.contact-panel::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -45%;
+  right: -12%;
+  width: 34rem;
+  height: 34rem;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(closest-side, var(--glow-wash), transparent);
+}
