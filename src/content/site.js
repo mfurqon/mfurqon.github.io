@@ -1,5 +1,4 @@
 // ==== SEMUA KONTEN ADA DI FILE INI ====
-// Ganti teks di dalam tanda kutip. Jangan hapus tanda koma atau kurung.
 
 export const site = {
     name: "Muhammad Furqon Prasetyo",
